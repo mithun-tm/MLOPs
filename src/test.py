@@ -22,4 +22,8 @@ acc = accuracy_score(df['label'], y_pred)
 
 print("Accuracy : ",acc)
 
+with open("test_metics.txt", 'w') as outfile:
+    outfile.write("Test Accuracy : ",acc)
+
+
 
