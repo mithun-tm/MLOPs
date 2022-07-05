@@ -1,57 +1,31 @@
-project_name
+MLOPs Pipeline
 ==============================
 
 CI Steps for ML
 
 Project Organization
 ------------
-
-    ├── LICENSE
-    ├── Makefile           <- Makefile with commands like `make data` or `make train`
+    ├── Makefile           <- Makefile for installation of all the dependencies using `make install` 
     ├── README.md          <- The top-level README for developers using this project.
-    ├── data
-    │   ├── external       <- Data from third party sources.
-    │   ├── interim        <- Intermediate data that has been transformed.
-    │   ├── processed      <- The final, canonical data sets for modeling.
-    │   └── raw            <- The original, immutable data dump.
-    │
-    ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
-    │
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
-    │
-    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
-    │
-    ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-    │
-    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures        <- Generated graphics and figures to be used in reporting
-    │
-    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-    │                         generated with `pip freeze > requirements.txt`
-    │
-    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
+    ├── data               <- tracked using dvc, only .dvc available on github, actual data linked with google drive using dvc
+    ├── models             <- Trained and pickled models
+    ├── reports            <- Generated train and test metrics and tracked using dvc
+    ├── requirements.txt   <- The requirements file for reproducing the analysis environment
     ├── src                <- Source code for use in this project.
-    │   ├── __init__.py    <- Makes src a Python module
-    │   │
-    │   ├── data           <- Scripts to download or generate data
-    │   │   └── make_dataset.py
-    │   │
-    │   ├── features       <- Scripts to turn raw data into features for modeling
-    │   │   └── build_features.py
-    │   │
-    │   ├── models         <- Scripts to train models and then use trained models to make
-    │   │   │                 predictions
-    │   │   ├── predict_model.py
-    │   │   └── train_model.py
-    │   │
-    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
-    │
-    └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
-
+    │   ├── train.py       <- for training the model and storing the model file, logging the training metrics
+    │   └── test.py        <- for testing the model and tracking the model metrics using dvc
+    ├── .github/workflows  <- train.yaml file for triggering installations, model error calculations and logging using dvc
+    ├── .dvc               <- contains dvc remote storage configuration (google drive)
+    ├── dvc.yaml           <- dvc repro stages - model training, model testing, metrics loggging 
+    └── dvc.lock           <- dvc repro stages meta data info
 
 --------
 
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+Features 
+1. Github integration of all the development files : Continuos Integration
+2. CookieCutter format for organizing the repository
+3. Github workflows for triggering commands on every push 
+4. DVC integration 
+5. Tracking of train.csv and test.csv using DVC, added google drive as remote storage 
+6. Stages defined with train, test and metrics. Metrics tracked by DVC
+7. dvc repro in github workflow for tracking metrics from different ML experiments facilitating continuous machine learning
