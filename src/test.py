@@ -11,10 +11,7 @@ df = pd.DataFrame(data=iris.data, columns = ['sepal_length', 'sepal_width', 'pet
 df['label'] = iris.target
 df = df [120:]
 
-
 filename = "models/saved_model"
-
-# df = pd.read_csv("data/test_data.csv")
 
 RF_model = pickle.load(open(filename, 'rb'))
 y_pred = RF_model.predict(df[['sepal_length', 'sepal_width', 'petal_length', 'peta_width']])
