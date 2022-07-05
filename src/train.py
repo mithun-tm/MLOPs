@@ -2,10 +2,16 @@ import pandas as pd
 import pickle 
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
+from sklearn import datasets
+import pandas as pd
 
 filename = "models/saved_model"
 
-df = pd.read_csv("data/train_data.csv")
+iris = datasets.load_iris()
+df = pd.DataFrame(data=iris.data, columns = ['sepal_length', 'sepal_width', 'petal_length', 'peta_width'] )
+df['label'] = iris.target
+df = df [:120]
+
 
 
 RF_model = RandomForestClassifier(n_estimators=5, max_depth = 3)
