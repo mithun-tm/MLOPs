@@ -13,10 +13,14 @@ jobs:
         run: |
           # Your ML workflow goes here
           make install
-          python src/train.py
-          python src/test.py
+          dvc repro
+          
           echo '## Model Metrics' > report.md
-          cat reports/train_metics.txt  >> report.md
-          echo ", "
-          cat reports/test_metics.txt  >> report.md          
+          cat reports/train_metrics.txt  >> report.md
+          
           cml-send-comment report.md
+          
+          git fetch --prune
+          echo '## Model Metrics Diff' > report1.md
+          dvc metrics diff --show-md master > report1.md
+          cml-send-comment report1.md
