@@ -10,7 +10,7 @@ jobs:
       - name: Train model
         run: |
           # Your ML workflow goes here
-          Makefile
+          make install
           python src/train.py
       - name: Write CML report
         env:
