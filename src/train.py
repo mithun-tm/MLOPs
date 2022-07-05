@@ -5,7 +5,7 @@ from sklearn.metrics import accuracy_score
 
 filename = "../models/saved_model"
 
-df = pd.read_csv("../data/train_data.csv"")
+df = pd.read_csv("../data/train_data.csv")
 
 
 RF_model = RandomForestClassifier()
