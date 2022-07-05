@@ -4,6 +4,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from sklearn import datasets
 import pandas as pd
+import json
 
 filename = "models/saved_model"
 
@@ -20,5 +21,8 @@ acc = accuracy_score(df['label'], y_pred)
 print("Accuracy : ", acc)
 pickle.dump(RF_model, open(filename, 'wb'))
 
-with open("reports/train_metics.txt", 'w') as outfile:
+with open("reports/train_metrics.txt", 'w') as outfile:
     outfile.write("Training Accuracy : %2.3f" % acc)
+
+with open("reports/train_metrics.json", 'w') as outfile:
+    json.dump({"train accuracy": acc}, outfile)
