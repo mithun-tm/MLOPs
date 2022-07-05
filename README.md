@@ -29,3 +29,9 @@ Features
 5. Tracking of train.csv and test.csv using DVC, added google drive as remote storage 
 6. Stages defined with train, test and metrics. Metrics tracked by DVC
 7. dvc repro in github workflow for tracking metrics from different ML experiments facilitating continuous machine learning
+8. AWS Cloud9 for using a cloud server which would help in migrating the workflow to cloud, deployment on cloud
+
+
+Cloned the github repo to the server on cloud9
+<img width="1505" alt="image" src="https://user-images.githubusercontent.com/108567882/177424795-e1e29288-5695-4696-9339-b1dad57bda38.png">
+
