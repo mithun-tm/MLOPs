@@ -1,0 +1,21 @@
+name: Iris Train
+on: [push]
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    container: docker://dvcorg/cml-py3:latest
+    steps:
+      - uses: actions/checkout@v2
+      #- uses: iterative/setup-cml@v1
+      - name: Train model
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Your ML workflow goes here
+          make install
+          dvc repro
+          
+          git fetch --prune
+          echo '## Model Metrics Diff' > report1.md
+          dvc metrics diff --show-md master > report1.md
+          cml-send-comment report1.md
