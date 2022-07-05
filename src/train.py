@@ -22,3 +22,6 @@ acc = accuracy_score(df['label'], y_pred)
 print("Accuracy : ", acc)
 pickle.dump(RF_model, open(filename, 'wb'))
 
+with open("train_metics.txt", 'w') as outfile:
+    outfile.write("Training Accuracy : ",acc)
+
