@@ -25,4 +25,4 @@ with open("reports/train_metrics.txt", 'w') as outfile:
     outfile.write("Training Accuracy : %2.3f" % acc)
 
 with open("reports/train_metrics.json", 'w') as outfile:
-    json.dump({"train accuracy": acc}, outfile)
+    json.dump({"train accuracy": acc, "train datapoints" : df.shape[0] }, outfile)
