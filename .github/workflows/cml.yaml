@@ -14,8 +14,6 @@ jobs:
           # Your ML workflow goes here
           Makefile
           python src/train.py
- 
-        run: |
           # Post reports as comments in GitHub PRs
           cat reports/results.txt 
           # >> report.m
