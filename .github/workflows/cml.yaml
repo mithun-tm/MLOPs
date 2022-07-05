@@ -15,6 +15,6 @@ jobs:
           make install
           python src/train.py
           echo '## Model Metrics' > report.md
-          cat reports/train_metics.txt  >> report.md
+          cat reports/train_metrics.txt  >> report.md
           
           cml-send-comment report.md
