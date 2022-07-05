@@ -15,6 +15,11 @@ jobs:
           make install
           dvc repro
           
+          echo '## Model Metrics' > report.md
+          cat reports/train_metrics.txt  >> report.md
+          
+          cml-send-comment report.md
+          
           git fetch --prune
           echo '## Model Metrics Diff' > report1.md
           dvc metrics diff --show-md master > report1.md
