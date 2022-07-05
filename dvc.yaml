@@ -3,11 +3,6 @@ stages:
     cmd: python src/train.py
     deps:
       - src/train.py
-    outs: 
-      - models/saved_model
-    metrics: 
-      - reports/train_metrics.json:
-          cache: false
   test:
     cmd: python src/test.py
     deps: 

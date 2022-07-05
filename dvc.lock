@@ -4,28 +4,21 @@ stages:
     cmd: python src/train.py
     deps:
     - path: src/train.py
-      md5: d282ac4dabae400bb3eaf543dd8c2ff2
-      size: 982
-    outs:
-    - path: models/saved_model
-      md5: 645caf355216a24c562f166950643f63
-      size: 5650
-    - path: reports/train_metrics.json
-      md5: 99efd38a7d9a022a9e72d9292009c221
-      size: 38
+      md5: eb736292839af81415ca0aa521ec5117
+      size: 1017
   test:
     cmd: python src/test.py
     deps:
     - path: models/saved_model
-      md5: 645caf355216a24c562f166950643f63
-      size: 5650
+      md5: f06900755daf9474e0b12086530cff2a
+      size: 6293
     - path: reports/train_metrics.txt
-      md5: ebdb6b32ab8092298a7893986b352c75
+      md5: d5da90fdc4e440dce3282550afb2ba7f
       size: 25
     - path: src/test.py
       md5: 7739ae8dbd50d109207255d95d9ae534
       size: 858
     outs:
     - path: reports/test_metrics.json
-      md5: 861ce90ca0d93e76fcb2f2b415515c05
-      size: 60
+      md5: f473997694d659d78c7082c6686a7501
+      size: 45
