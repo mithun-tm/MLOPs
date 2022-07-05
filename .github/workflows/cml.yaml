@@ -14,6 +14,6 @@ jobs:
           # Your ML workflow goes here
           make install
           python src/train.py
-          echo '## Model Metrics" > report.md
+          echo '## Model Metrics' > report.md
           cat reports/train_metics.txt  >> report.md
           cml-send-comment report.md
