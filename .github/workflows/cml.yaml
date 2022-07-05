@@ -3,19 +3,18 @@ on: [push]
 jobs:
   run:
     runs-on: ubuntu-latest
-    # container: docker://ghcr.io/iterative/cml:0-dvc2-base1
+    container: docker://dvcorg/cml-py3:latest
     steps:
       - uses: actions/checkout@v2
       #- uses: iterative/setup-cml@v1
       - name: Train model
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Your ML workflow goes here
           make install
           python src/train.py
-      - name: Write CML report
-        env:
-          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          # Post reports as comments in GitHub PRs
-          cat reports/train_metics.txt 
-          # >> report.m
+          echo '## Model Metrics' > report.md
+          cat reports/train_metics.txt  >> report.md
+          
+          cml-send-comment report.md
